@@ -1,0 +1,49 @@
+Ini adalah tutorial setup backend dengan tech stack Express & MongoDB
+
+1. Buka terminal & ketik, "npm init -y" untuk membuat file package.json nya
+2. Ketik "npm install express mongoose cors bcrypt jsonwebtoken dotenv", input ini menambahkan beberapa package dependencies :
+- express, 
+- dotenv, 
+- mongoose, 
+- manajemen CORS untuk browser agar bisa diakses local
+- bcrypt untuk kebutuhan enkripsi auth
+- jsonwebtoken untuk token JWT auth nya
+3. Lanjut untuk kebutuhan development/devDependencies ketik, "npm install -D typescript ts-node nodemon @types/node @types/express @types/cors @types/bcrypt @types/jsonwebtoken @types/dotenv"
+4. Buat file ts.config, ketik "npx tsc --init"
+5. Edit file ts.config, tambahkan dan ubah value nya : 
+    {
+        "compilerOptions": {
+            "target": "ES2020",
+            "module": "commonjs",
+            "rootDir": "./src",
+            "outDir": "./dist",
+            "strict": true,
+            "esModuleInterop": true,
+            "forceConsistentCasingInFileNames": true,
+            "skipLibCheck": true,
+            "moduleResolution": "node",
+            "resolveJsonModule": true
+        }
+    }
+6. Buat folder ".src", lokasinya di root (paling luar), didalamnya tambahkan 4 folder, controlles, models, middleware, routes. Dan 2 file, app.ts, server.ts
+7. Buat file .env berisi PORT, MONGO_URI, JWT_SECRET
+8. Masuk ke web MongoDB -> Pricing -> Create free cluster : 
+    1. "name-cluster"
+    2. google cloud - jakarta
+    3. Sign in google (jika belum)
+    4. Sesuaikan database user -> create database user -> choose conections -> drivers
+    5. Copy semua yang ada di instruksinya pada no 3 dan paste ke .env MONGO_URI
+    6. Pada bagian "mongodb.net/?appName" isi gap antara / dan ?, dengan nama db nya nanti, "contoh mongodb.net/sporton?appName"
+9. Buat file "nodemon.json" dan isi dengan :
+    {
+        "watch": ["src"],
+        "ext": "ts",
+        "ignore": ["dist"],
+        "exec": "ts-node src/server.ts"
+    }
+10. Update bagian 'scripts' di "packge.json" : 
+    "scripts": {
+    "dev": "nodemon",
+    "build": "tsc",
+    "start": "node dist/server.js"
+    }
