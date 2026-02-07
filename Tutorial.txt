@@ -1,14 +1,15 @@
 Ini adalah tutorial setup backend dengan tech stack Express & MongoDB
 
 1. Buka terminal & ketik, "npm init -y" untuk membuat file package.json nya
-2. Ketik "npm install express mongoose cors bcrypt jsonwebtoken dotenv", input ini menambahkan beberapa package dependencies :
+2. Ketik "npm install express mongoose cors bcrypt jsonwebtoken dotenv multer", input ini menambahkan beberapa package dependencies :
 - express, 
 - dotenv, 
 - mongoose, 
 - manajemen CORS untuk browser agar bisa diakses local
 - bcrypt untuk kebutuhan enkripsi auth
 - jsonwebtoken untuk token JWT auth nya
-3. Lanjut untuk kebutuhan development/devDependencies ketik, "npm install -D typescript ts-node nodemon @types/node @types/express @types/cors @types/bcrypt @types/jsonwebtoken @types/dotenv"
+- multer untuk kebutuhan upload file
+3. Lanjut untuk kebutuhan development/devDependencies ketik, "npm install -D typescript ts-node nodemon @types/node @types/express @types/cors @types/bcrypt @types/jsonwebtoken @types/dotenv @types/multer"
 4. Buat file ts.config, ketik "npx tsc --init"
 5. Edit file ts.config, tambahkan dan ubah value nya : 
     {
@@ -48,3 +49,12 @@ Ini adalah tutorial setup backend dengan tech stack Express & MongoDB
     "start": "node dist/server.js"
     }
 11. Sebelum di push ke github, jangan lupa buat file ".gitignore"
+
+
+
+Admin : 
+{
+    "name": "Super Admin",
+    "email": "sporton@admin.com",
+    "password": "admin123"
+}

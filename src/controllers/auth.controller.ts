@@ -49,30 +49,32 @@ export const initiateAdmin = async (
   try {
     const { email, password, name } = req.body;
 
-    // Check if user data / entry is exist
     const count = await User.countDocuments({});
     if (count > 0) {
       res.status(400).json({
         message:
-          "We can only have 1 admin user, if you want to create new admin user, please delete the user manually from the database",
+          "Admin already exists. Delete user manually from database to recreate admin.",
       });
       return;
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new User({
       email,
       password: hashedPassword,
       name,
+      role: "admin",
     });
 
     await newUser.save();
 
-    res.status(201).json({ message: "Admin user created sucessfully!" });
+    res.status(201).json({
+      message: "Admin user created successfully",
+    });
   } catch (error) {
-    console.error("Initiate new admin user error : ", error);
+    console.error("Initiate admin error:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
