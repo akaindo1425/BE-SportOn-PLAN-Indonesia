@@ -48,8 +48,10 @@ Ini adalah tutorial setup backend dengan tech stack Express & MongoDB
     "build": "tsc",
     "start": "node dist/server.js"
     }
-11. Sebelum di push ke github, jangan lupa buat file ".gitignore"
-
+11. Sebelum di push ke github, jangan lupa buat file ".gitignore", dan sembunyikan semua file penting nya (.env, dll)
+12. Develop BE ke platform railway.com, jangan lupa untuk setting .env railway
+13. Masuk ke web Atlas/Mongo DB -> Database & Network -> IP Address List -> Add IP 0.0.0.0/0
+14. Kembali ke Railway, ke setting repo nya -> Generate Domain -> Cek kembali logs bila ada error dan redeploy -> selesai
 
 
 Admin : 
